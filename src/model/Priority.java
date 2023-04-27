@@ -1,7 +1,7 @@
 public enum Priority {
-    OLDAGE,
+    THIRDAGE,
     PREGNANT,
-    MILES,
+    SMALLKID,
     SPECIALATTENTION,
     NONE
 }

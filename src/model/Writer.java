@@ -5,11 +5,11 @@ public class Writer {
 
     ObjectOutputStream writer;
 
-    public Writer(){
+    public Writer(File file){
 
         try {
 
-            writer = new ObjectOutputStream(new FileOutputStream("C:\\Users\\Juan\\OneDrive\\Escritorio\\Univerisdad\\Tercer semestre\\Computacion y estructuras discretas\\Tarea Integradora I\\AirlineApp\\src\\model\\DataBase.txt"));
+            writer = new ObjectOutputStream(new FileOutputStream(file));
 
         } catch (IOException e) {
 
@@ -19,31 +19,10 @@ public class Writer {
 
     }
 
-    public File createFile(){
-
-        File file = new File("C:\\Users\\Juan\\OneDrive\\Escritorio\\Univerisdad\\Tercer semestre\\Computacion y estructuras discretas\\Tarea Integradora I\\AirlineApp\\src\\model\\DataBase.txt");
-
-            //Especificar que este file debe ser cambiado a partir del path de su pc.
-
-        try {
-            if(file.createNewFile()){
-
-                System.out.println("Created File"); //Delete this validations
-
-            }
-        } catch (IOException e) {
-            
-            System.out.println("Unable to create the DataBase");    //Delete this validations
-
-
-        }
-
-        return file;
-        
-    }
-
     public ObjectOutputStream getWriter() {
+
         return writer;
+        
     }
 
     public void setWriter(ObjectOutputStream writer) {
