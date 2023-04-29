@@ -1,3 +1,4 @@
+package model;
 import java.util.NoSuchElementException;
 
 public class PriorityQueue<T extends Comparable<T>> {
@@ -145,6 +146,6 @@ public class PriorityQueue<T extends Comparable<T>> {
     private int leftChild(int index) {
 
         return index * 2;
-        
+
     }
 }

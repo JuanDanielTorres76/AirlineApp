@@ -1,3 +1,4 @@
+package model;
 
 import java.io.*;
 
@@ -22,7 +23,7 @@ public class Writer {
     public ObjectOutputStream getWriter() {
 
         return writer;
-        
+
     }
 
     public void setWriter(ObjectOutputStream writer) {

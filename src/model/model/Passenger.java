@@ -1,4 +1,7 @@
-public class Passenger {
+package model;
+import java.io.Serializable;
+
+public class Passenger implements Serializable{
 
     private String name;
 
@@ -24,8 +27,6 @@ public class Passenger {
         this.category = category;
     
     }
-
-
     
     public String getName() {
         

@@ -1,4 +1,10 @@
+import model.*;
+
 import java.util.Scanner;
+
+import model.Category;
+
+import model.Priority;
 
 public class AirlineApp {
 
@@ -28,11 +34,11 @@ public class AirlineApp {
 
         main = new AirlineApp();
 
-        main.menu();
+        main.startMenu();
 
     }
 
-    public void menu(){
+    public void startMenu(){
 
         System.out.println("Choose one of the next options");
 
@@ -47,6 +53,8 @@ public class AirlineApp {
         switch(option){
 
             case 1: 
+
+                main.defaultDataBase();
 
                 break;
         
@@ -66,13 +74,109 @@ public class AirlineApp {
 
     }
 
+    public void defaultMenu(){
+
+        boolean runnign = true;
+
+        while(runnign){
+
+            System.out.println("Choose one of these options");
+
+            System.out.println(" 1 - Show unorganized passengers");
+
+            System.out.println(" 2 - Search one passenger");
+
+            System.out.println(" 3 - Organize Passengers according their boarding prioritization");
+
+            System.out.println(" 4 - Organize passengers according to their departure prioritization");
+
+            int option = read.nextInt();
+
+            read.nextLine();
+
+            switch(option){
+
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4: 
+
+                    break;
+
+                default:
+
+                    break;
+
+            }
+
+        }
+
+    }
+
+    public void newBaseMenu(){
+
+        boolean runnign = true;
+
+        while(runnign){
+
+            System.out.println("Choose one of these options");
+
+            System.out.println(" 1 - Show unorganized passengers");
+
+            System.out.println(" 2 - Search one passenger");
+
+            System.out.println(" 3 - Organize Passengers according their boarding prioritization");
+
+            System.out.println(" 4 - Organize passengers according to their departure prioritization");
+
+            int option = read.nextInt();
+
+            read.nextLine();
+
+            switch(option){
+
+                case 1:
+
+                    System.out.println(manager.recoverPassengers());
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4: 
+
+                    break;
+
+                default:
+
+                    break;
+
+            }
+
+        }
+
+    }
+
     public void defaultDataBase(){
 
-        System.out.println("They are the passengers of one of our flights");
+        System.out.println("You are gonna use the defaul dataBase of one of our fligths");
 
-        //Print here the unsorted list of passengers, otganized by the time of arrival.
-
-        
+       defaultMenu(); 
 
     }
 
@@ -197,7 +301,7 @@ public class AirlineApp {
 
             Priority priority = getPriority(option1);
 
-            System.out.println("Choos one of the next flight categories the passenger belongs");
+            System.out.println("Choose one of the next flight categories the passenger belongs");
 
             System.out.println(" 1 - Silver");
 
@@ -237,17 +341,17 @@ public class AirlineApp {
 
             System.out.println(" Remember the max amount of passengers is 30");
 
-            newDataBase();
+            numPassengers = read.nextInt();
+
+            read.nextLine();
 
         }else{
 
             System.out.println(registerPassengers(0 , numPassengers)); 
 
-            System.out.println(manager.exportPassengers(0));
+            System.out.println(manager.exportPassengers());
 
         }
-
-
 
     }
 

@@ -1,3 +1,4 @@
+package model;
 public interface IPriorityQueue<T extends Comparable<T>> {
     
     public void add(T element);
@@ -7,7 +8,7 @@ public interface IPriorityQueue<T extends Comparable<T>> {
     public boolean isEmpty();
 
     public int size();
-    
+
     public T peek();
     
 }

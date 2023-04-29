@@ -1,3 +1,5 @@
+package model;
+
 import java.io.*;
 
 import java.net.URL;
@@ -16,6 +18,8 @@ public class AirlineManager {
 
     private ArrayList<Passenger> passengers;
 
+    private ArrayList<Passenger> recoveredPassengers;
+
     public AirlineManager(){
 
         this.file = null;
@@ -24,27 +28,57 @@ public class AirlineManager {
 
     }
 
-    public String exportPassengers(int counter){
+    // Methods for the usage of the new database
 
-        if(counter < passengers.size()){
+    public String exportPassengers(){
 
-            try {
+        try {
 
-                w.getWriter().writeObject(passengers.get(counter));
+            w.getWriter().writeObject(passengers);
 
-                w.getWriter().close();
+            w.getWriter().close();
 
-                exportPassengers(counter+1);
+        } catch (IOException e) {
 
-            } catch (IOException e) {
-
-                e.printStackTrace();
-
-            }
+            e.printStackTrace();
 
         }
 
         return "Exported dataBase";
+
+    }
+
+    public String importPassengers(){
+
+        try {
+
+        recoveredPassengers = (ArrayList<Passenger>) r.getReader().readObject();
+
+        r.getReader().close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return "Imported dataBase";
+
+    }
+
+    public String recoverPassengers(){
+
+        importPassengers();
+
+        String passengers = "";
+
+        for(int i = 0; i <recoveredPassengers.size(); i++){
+
+            passengers += recoveredPassengers.get(i).toString() + "\n";
+
+        }
+
+        return passengers;
 
     }
 
@@ -54,7 +88,7 @@ public class AirlineManager {
 
         passengers.add(newPassenger);
 
-        return "passenger " + newPassenger.getName() + ": Added "; 
+        return "passenger " + newPassenger.getName() + ": Added \n"; 
     }
 
     public String addNewFile(){
@@ -78,6 +112,8 @@ public class AirlineManager {
 
     }
 
+    //Methods for the usage of the default database
+
     public void initializeWithCurrentFile(){
 
         try {
@@ -93,9 +129,23 @@ public class AirlineManager {
             e.printStackTrace();
 
         }
-
-
         
+    }
+
+    public String printPassengers(){
+
+        importPassengers();
+
+        String msg = "";
+
+        for(int i = 0; i < recoveredPassengers.size(); i++){
+
+            msg +=  i + ":" + recoveredPassengers.get(i).toString() + "\n";
+
+        }
+
+        return msg; 
+
     }
 
     public void deleteFile(File file){
@@ -134,6 +184,14 @@ public class AirlineManager {
 
         return r;
 
+    }
+
+    public ArrayList<Passenger> getRecoveredPassengers() {
+        return recoveredPassengers;
+    }
+
+    public void setRecoveredPassengers(ArrayList<Passenger> recoveredPassengers) {
+        this.recoveredPassengers = recoveredPassengers;
     }
     
 
