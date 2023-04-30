@@ -118,6 +118,8 @@ public class AirlineApp {
 
                 case 4: 
 
+                    organizeDeparturePassenger();
+
                     break;
 
                 case 5: 
@@ -184,6 +186,8 @@ public class AirlineApp {
 
                 case 4: 
 
+                    organizeDeparturePassenger();
+
                     break;
 
                 case 5: 
@@ -211,6 +215,13 @@ public class AirlineApp {
         System.out.println(manager.organizeBoardingPassengers());
 
         System.out.println(manager.printPassengers());
+
+    }
+
+    public void organizeDeparturePassenger(){
+
+        System.out.println(manager.organizeDeparturePassenger());
+
 
     }
 
