@@ -1,4 +1,6 @@
 package model;
+import java.util.ArrayList;
+
 import java.util.NoSuchElementException;
 
 public class PriorityQueue<T extends Comparable<T>> {
@@ -15,6 +17,16 @@ public class PriorityQueue<T extends Comparable<T>> {
 
         size = 0;
 
+    }
+
+    public void addAll(ArrayList<T> elements) {
+
+        for (T element : elements) {
+
+            add(element);
+
+        }
+        
     }
 
     public void add(T element) {
