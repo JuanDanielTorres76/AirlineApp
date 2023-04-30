@@ -74,7 +74,7 @@ public class AirlineManager {
 
         for(int i = 0; i <recoveredPassengers.size(); i++){
 
-            passengers += recoveredPassengers.get(i).toString() + "\n";
+            passengers += i + ":" +  recoveredPassengers.get(i).toString() + "\n";
 
         }
 
@@ -102,7 +102,6 @@ public class AirlineManager {
         return msg;
 
     }
-
 
     private void initilizeWithNewFile(File file){
 

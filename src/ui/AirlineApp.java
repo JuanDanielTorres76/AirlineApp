@@ -98,6 +98,8 @@ public class AirlineApp {
 
                 case 1:
 
+                    System.out.println(manager.printPassengers());
+
                     break;
 
                 case 2:
@@ -176,6 +178,8 @@ public class AirlineApp {
 
         System.out.println("You are gonna use the defaul dataBase of one of our fligths");
 
+        manager.initializeWithCurrentFile();
+
        defaultMenu(); 
 
     }
@@ -239,25 +243,25 @@ public class AirlineApp {
 
             case 1: 
 
-                c = Category.Silver;
+                c = Category.SILVER;
                 break;
 
             case 2: 
 
-                c =  Category.Gold;
+                c =  Category.GOLD;
 
                 break;
 
             
             case 3: 
 
-                c =  Category.Platinum;
+                c =  Category.PLATINUM;
 
                 break;  
                 
             default: 
                 
-                c = Category.Silver;
+                c = Category.SILVER;
 
                 break;
         }
