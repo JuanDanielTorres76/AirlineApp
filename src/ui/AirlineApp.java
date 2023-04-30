@@ -90,6 +90,8 @@ public class AirlineApp {
 
             System.out.println(" 4 - Organize passengers according to their departure prioritization");
 
+            System.out.println(" 5 - End program");
+
             int option = read.nextInt();
 
             read.nextLine();
@@ -104,13 +106,25 @@ public class AirlineApp {
 
                 case 2:
 
+                    System.out.println(searchPassenger());
+
                     break;
 
                 case 3:
 
+                    organizeBoardingPassengers();
+
                     break;
 
                 case 4: 
+
+                    break;
+
+                case 5: 
+
+                    System.out.println("Thank you for using our program");
+
+                    runnign = false;
 
                     break;
 
@@ -121,6 +135,8 @@ public class AirlineApp {
             }
 
         }
+
+        manager.deleteFile();
 
     }
 
@@ -140,6 +156,8 @@ public class AirlineApp {
 
             System.out.println(" 4 - Organize passengers according to their departure prioritization");
 
+            System.out.println(" 5 - End program");
+
             int option = read.nextInt();
 
             read.nextLine();
@@ -154,13 +172,25 @@ public class AirlineApp {
 
                 case 2:
 
+                    System.out.println(main.searchPassenger());
+
                     break;
 
                 case 3:
 
+                    organizeBoardingPassengers();
+
                     break;
 
                 case 4: 
+
+                    break;
+
+                case 5: 
+
+                    System.out.println("Thank you for using our program");
+
+                    runnign = false;
 
                     break;
 
@@ -172,13 +202,23 @@ public class AirlineApp {
 
         }
 
+        manager.deleteFile();
+
+    }
+
+    public void organizeBoardingPassengers(){
+
+        System.out.println(manager.organizeBoardingPassengers());
+
+        System.out.println(manager.printPassengers());
+
     }
 
     public void defaultDataBase(){
 
         System.out.println("You are gonna use the defaul dataBase of one of our fligths");
 
-        manager.initializeWithCurrentFile();
+        System.out.println(manager.initializeWithCurrentFile()); 
 
        defaultMenu(); 
 
@@ -269,6 +309,17 @@ public class AirlineApp {
         return c;
     }
 
+    public String searchPassenger(){
+
+        System.out.println("Type the id of the passenger");
+
+        String id = read.nextLine();
+
+        return manager.searchPassenger(id);
+
+
+    }
+
     public String registerPassengers(int counter, int numPassengers){
 
         String msg = "";
@@ -321,6 +372,8 @@ public class AirlineApp {
 
             System.out.println(manager.registerPassengers(name, lastName, id, priority, category));
 
+            registerPassengers(counter+1, numPassengers);
+
         }else{
 
             msg = "The passengers have been sucesfully added";
@@ -356,6 +409,8 @@ public class AirlineApp {
             System.out.println(manager.exportPassengers());
 
         }
+
+        newBaseMenu();
 
     }
 

@@ -129,5 +129,32 @@ public class BSTTest<K> {
     assertEquals(expected, actual);
     }
 
+    @Test
+public void testSearchExistingKey() {
+    Node<Integer, String> node = new Node<>(1, "A");
+    BST<Integer, String> bst = new BST<>(node);
+    bst.insert(2, "B");
+    bst.insert(3, "C");
+    String result = bst.search(2);
+    assertEquals("B", result);
+}
+
+@Test
+public void testSearchNonExistingKey() {
+    Node<Integer, String> node = new Node<>(1, "A");
+    BST<Integer, String> bst = new BST<>(node);
+    bst.insert(2, "B");
+    bst.insert(3, "C");
+    String result = bst.search(4);
+    assertNull(result);
+}
+
+@Test
+public void testSearchEmptyTree() {
+    BST<Integer, String> bst = new BST<>(null);
+    String result = bst.search(1);
+    assertNull(result);
+}
+
 
 }

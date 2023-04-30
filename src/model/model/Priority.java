@@ -2,15 +2,15 @@ package model;
 
 public enum Priority {
 
-    THIRDAGE(1),
+    THIRDAGE(5),
     
-    PREGNANT(2),
+    PREGNANT(4),
     
     SMALLKID(3),
     
-    SPECIALATTENTION(4),
+    SPECIALATTENTION(2),
     
-    NONE(5);
+    NONE(1);
 
     private int value;
 

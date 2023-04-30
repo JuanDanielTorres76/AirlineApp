@@ -124,18 +124,34 @@ public class Passenger implements Serializable, Comparable<Passenger>{
     @Override
     public int compareTo(Passenger other) {
 
-        if (this.getPrioriry() == other.getPrioriry()) {
+        if (this.getPrioriry().getValue() < other.getPrioriry().getValue()) {
 
-            // Si las prioridades son iguales, se compara por categoría
+            //Este pasajero tiene una prioridad menor que la del otro 
 
-            return this.categoryCompareTo(other);
+            return -1;
 
-        } else {
+        } else if(this.getPrioriry().getValue() > other.getPrioriry().getValue()) {
 
-            // Si las prioridades son diferentes, se compara por valor numérico
+            // Este pasajero tiene una prioridad mayor que la del otro 
 
-            return Integer.compare(this.getPrioriry().getValue(), other.getPrioriry().getValue());
+            return 1;
             
+        }else{
+
+            if(this.category.ordinal() < other.getCategory().ordinal()){
+
+                return -1;
+
+            }else if(this.category.ordinal() > other.getCategory().ordinal()){
+
+                return 1; 
+
+            }else{
+
+                return 0;
+
+            }
+
         }
     }
 
