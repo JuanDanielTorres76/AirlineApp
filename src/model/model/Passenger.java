@@ -1,7 +1,7 @@
 package model;
 import java.io.Serializable;
 
-public class Passenger implements Serializable{
+public class Passenger implements Serializable, Comparable<Passenger>{
 
     private String name;
 
@@ -96,5 +96,47 @@ public class Passenger implements Serializable{
 
     }
 
+
+    public int categoryCompareTo(Passenger passenger) {
+
+        // Mayor prioridad
+
+        if (this.getCategory() == Category.PLATINUM && passenger.getCategory() != Category.PLATINUM) {
+
+            return -1;
+
+        // Menor prioridad
+
+        } else if (this.getCategory() != Category.PLATINUM && passenger.getCategory() == Category.PLATINUM) {
+
+            return 1;
+
+        // Misma prioridad
+
+        } else {
+
+            return 0;
+
+        } 
+
+    }
+
+    @Override
+    public int compareTo(Passenger other) {
+
+        if (this.getPrioriry() == other.getPrioriry()) {
+
+            // Si las prioridades son iguales, se compara por categoría
+
+            return this.categoryCompareTo(other);
+
+        } else {
+
+            // Si las prioridades son diferentes, se compara por valor numérico
+
+            return Integer.compare(this.getPrioriry().getValue(), other.getPrioriry().getValue());
+            
+        }
+    }
 
 }
