@@ -4,6 +4,8 @@ import java.io.*;
 
 import java.util.ArrayList;
 
+import java.util.Collections;
+
 public class AirlineManager {
     
     private Writer w;
@@ -109,6 +111,62 @@ public class AirlineManager {
         }
 
         prioritizedPassengers.addAll(passengers);
+
+        return msg;
+
+    }
+
+    public String organizeDeparturePassenger() {
+        String msg = "The passengers have been successfully organized for departure.";
+    
+        PriorityQueue<Passenger> platinumPassengers = new PriorityQueue<>();
+
+        PriorityQueue<Passenger> goldPassengers = new PriorityQueue<>();
+
+        PriorityQueue<Passenger> silverPassengers = new PriorityQueue<>();
+    
+        for (Passenger passenger : passengers) {
+
+            Category category = passenger.getCategory();
+
+            if (category == Category.PLATINUM) {
+
+                platinumPassengers.add(passenger);
+
+            } else if (category == Category.GOLD) {
+
+                goldPassengers.add(passenger);
+
+            } else if (category == Category.SILVER) {
+
+                silverPassengers.add(passenger);
+
+            }
+        }
+    
+        StringBuilder sb = new StringBuilder();
+
+        int i = 1;
+   
+        while (!platinumPassengers.isEmpty()) {
+
+            sb.append(i++ + ": " + platinumPassengers.remove().toString() + "\n");
+
+        }
+    
+        while (!goldPassengers.isEmpty()) {
+
+            sb.append(i++ + ": " + goldPassengers.remove().toString() + "\n");
+
+        }
+    
+        while (!silverPassengers.isEmpty()) {
+
+            sb.append(i++ + ": " + silverPassengers.remove().toString() + "\n");
+
+        }
+    
+        System.out.println(sb.toString());
 
         return msg;
 
